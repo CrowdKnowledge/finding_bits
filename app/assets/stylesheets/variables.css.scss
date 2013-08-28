@@ -4,6 +4,9 @@ $header-bg: #263248;
 $header-fg: white;
 $header-h1-fg: #FF9800;
 
+$primary: #FF9800;
+$secondary: #263248;
+
 $header-link-fg: white;
 
 $sidebar-bg: white;
@@ -13,7 +16,7 @@ $border-color: #a34752;
 $border-color: #ddd;
 
 
-$syntaxhighlight-bg: #f8f8ff;
+$syntaxhighlight-bg: lighten($secondary, 75%);
 // Vertical rhythm
 $relative-font-sizing : false;
 $base-font-size       : 13px;

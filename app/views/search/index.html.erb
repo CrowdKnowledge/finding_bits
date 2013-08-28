@@ -23,9 +23,8 @@
         <div class="result" ng-repeat="result in search_results">
 
           <div class="repo-link-bar">
-            <a class='repo' href="{{result.repository.html_url}}">{{result.repository.full_name}}</a>
-            -
-            <a class='repo' href="{{result.html_url}}">{{result.path}}</a>
+            <a class='repo repo-name' href="{{result.repository.html_url}}">{{result.repository.full_name}}</a>
+            <a class='repo repo-link' href="{{result.html_url}}">{{result.path}}</a>
           </div>
 
           <div class='text-match' ng-repeat="text_match in result.text_matches">
