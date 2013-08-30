@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-  @include adjust-font-size-to(18px);
+  @include adjust-font-size-to(30px);
 }
 
 // Styling
@@ -21,7 +21,7 @@ h1 {
 header, footer {
   background-color: $header-bg;
   color: $header-fg;
-  padding: 1em;
+  padding: 20px;
   @include span-columns(10 omega, 10);
   // header and footer are full-width.
 
@@ -37,18 +37,20 @@ header, footer {
     color: $header-link-fg;
   }
 
-  div.project-details {
+  .project-details {
     @include span-columns(10, 10);
 
-    div.title {
+    .title {
       @include span-columns(10 omega, 10);
     }
 
-    div.description {
+    .description {
       @include span-columns(6, 10);
+      @include adjust-font-size-to(14px);
     }
 
-    div.project-urls {
+    .project-urls {
+      text-align: right;
       @include span-columns(1 omega, 10);
     }
   }

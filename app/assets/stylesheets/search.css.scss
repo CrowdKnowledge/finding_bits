@@ -1,10 +1,11 @@
 @import "variables";
+@import "compass/css3/border-radius";
 
 .results {
-  @include span-columns(8, 8);
+  @include span-columns(5, 8);
 
   .result {
-    margin-bottom: 2em;
+    margin: 3em 0;
 
     .text-match {
       @include pre(0.25);
@@ -13,17 +14,18 @@
       background-color: $syntaxhighlight-bg;
       font-size: medium;
       line-height: 100%;
+      margin-left: 0px;
+      overflow: auto;
     }
 
     div.repo-link-bar {
       font-size: 12px;
       a.repo {
-        font-weight: bold;
-        color: #4183c4;
         text-decoration: none;
       }
-      margin-bottom: 0.25em;
+      margin-bottom: 0.6em;
     }
+
 
     // UNUSED
     hr {
@@ -35,6 +37,32 @@
   }
 }
 
+$link-color: #4183c4;
+
+.repo-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: $secondary;
+}
+
+.repo-link {
+  font-size: 14px;
+  font-weight: normal;
+  color: $link-color;
+  margin-left: 0.8em;
+
+  &:before {
+    content: "";
+    border-left: 1px solid $secondary;
+    margin-right: 0.8em;
+    color: $secondary;
+  }
+}
+
+$search-height: 30px;
+$search-border-radius: 3px;
+$search-font-size: 15px;
+
 form {
 
   @include span-columns(8 omega, 8);
@@ -43,6 +71,7 @@ form {
 
   .select-language {
     @include span-columns(1, 8);
+    height: $search-height;
 
     select {
       @include span-columns(1, 1);
@@ -52,13 +81,20 @@ form {
   .search-snippet {
     @include span-columns(3, 8);
     margin-left: 0.5em;
+
     input[type='text'] {
       @include span-columns(2, 3);
+      height: $search-height;
+      font-size: $search-font-size;
     }
   }
 
   button.search {
-    margin-left: 1em;
+    margin-left: 0.5em;
+    @include border-radius($search-border-radius);
+    font-size: $search-font-size;
+    height: $search-height;
+    line-height: $search-font-size;
   }
 
   div.searching-indicator {
@@ -67,6 +103,16 @@ form {
   }
 }
 
+.chosen-container-single .chosen-single {
+  font-size: $search-font-size;
+  @include border-radius($search-border-radius);
+  height: $search-height;
+  line-height: $search-height;
+}
+
+.chosen-container-single .chosen-single div b {
+  background-position: 0 5px;
+}
 
 input.search {
   min-height: 1.5em;
