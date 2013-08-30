@@ -4,18 +4,26 @@ class SearchController < ApplicationController
       format.html
 
       format.json {
-        github_code_search = GithubCodeSearch.new(
+        h = {
             language: params[:language],
-            search_snippet: params[:search_snippet]
-        )
+            search_snippet: params[:search_snippet],
+            page: params[:page].to_i
+        }
 
-        # Is the response already available?
-        if github_code_search.available?
-          result = {"status" => "available", "result" => github_code_search.search_result}
-        else
-          # New search request. Queue it up.
-          github_code_search.queue unless github_code_search.queued?
-          result = {"status" => "queued"}
+        api_response = ApiResponse.find_by h
+
+        if api_response.nil? # First time this request is received. Queue it up.
+          ApiResponse.queue h
+          result = {"status" => ApiResponse::RESPONSE_QUEUED}
+
+        elsif api_response.queued? # Already queued, not yet available.
+          result = {"status" => ApiResponse::RESPONSE_QUEUED}
+
+        elsif api_response.available?
+          result = {
+              "status" => ApiResponse::RESPONSE_AVAILABLE,
+              "result" => api_response.search_result
+          }
         end
 
         render :json => result

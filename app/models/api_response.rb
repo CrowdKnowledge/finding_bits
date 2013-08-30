@@ -3,6 +3,16 @@ class ApiResponse < ActiveRecord::Base
   RESPONSE_AVAILABLE = "available"
   RESPONSE_QUEUED = "queued"
 
+  # Queue up a new ApiResponse request
+  def self.queue(h)
+    api_response = ApiResponse.create! language: h[:language],
+                                       search_snippet: h[:search_snippet],
+                                       page: h[:page],
+                                       status: ApiResponse::RESPONSE_QUEUED
+
+    Delayed::Job.enqueue GithubCodeSearchJob.new(api_response.id)
+  end
+
   # Has the response been fulfilled and available for consumption?
   def available?
     status == RESPONSE_AVAILABLE

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820181158) do
+ActiveRecord::Schema.define(version: 20130830055408) do
 
   create_table "api_responses", force: true do |t|
     t.string   "language"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20130820181158) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "page"
   end
 
   create_table "delayed_jobs", force: true do |t|
