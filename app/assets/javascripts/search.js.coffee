@@ -3,7 +3,8 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
     $scope.request_count = 0
     $scope.form = {
       search_snippet: "devil"
-      language: 'ruby'
+      language: 'ruby',
+      page: 1
     }
 
     $scope.languagesList = [ 'ruby', 'python']

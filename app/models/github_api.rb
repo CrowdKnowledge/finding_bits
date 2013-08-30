@@ -8,6 +8,10 @@ class GithubApi
   include HTTParty
   base_uri BASE_URI
 
+  def logger
+    @logger ||= Logger.new(Rails.root.join("log", "github_api.log"))
+  end
+
   # Get list of repos of the given language filtered by stars.
   # eg:
   #   GithubApi.new.top_repos(language: "ruby", stars: ">50")
@@ -15,7 +19,9 @@ class GithubApi
     query = {
         q: "language:#{h[:language]} stars:#{h[:stars]}",
         sort: "stars",
-        order: "desc"
+        order: "desc",
+        per_page: 100,
+        page: h[:page]
     }
     self.class.get(REPOSITORIES_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
   end
@@ -24,7 +30,7 @@ class GithubApi
   # Result will include text_matches to highlight the actual code snippet
   # (http://developer.github.com/v3/search/#highlighting-issue-search-results)
   # eg:
-  #   GithubApi.new.code_search(search_snippet: "shell escape", repos: ["rails/rails"])
+  #   GithubApi.new.code_search(search_snippet: "shell escape", repos: ["rails/rails"], page: 1)
   def code_search(h)
     search_snippet = h[:search_snippet]
 
@@ -32,10 +38,11 @@ class GithubApi
     repos = h[:repos].map {|repo| "@#{repo["full_name"]}"}.join(" ")
 
     query = {
-        q: "#{search_snippet} in:file #{repos}"
+        q: "#{search_snippet} in:file #{repos}",
+        page: h[:page]
     }
 
+    logger.info "#{CODE_URI}, #{query.to_json}"
     self.class.get(CODE_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
   end
-
 end
