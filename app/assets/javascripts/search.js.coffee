@@ -28,7 +28,7 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
             $scope.search_status = "Searching.."
             $timeout (->
               $scope.make_request maximum_retries, current_retries+1
-            ), current_retries*1500
+            ), (current_retries*current_retries)*1500
       ).error (data, status, headers, config) ->
         $scope.search_status = "Could not contact the server"
   init()
