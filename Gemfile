@@ -51,7 +51,6 @@ end
 
 
 group :test do
-  gem 'zeus'
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webmock'
