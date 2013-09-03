@@ -36,7 +36,7 @@ class ApiResponse < ActiveRecord::Base
   end
 
   # This request has failed permanently. Remove itself so that it will be retried when someone tries again.
-  def failed!
+  def fail!
     destroy
   end
 

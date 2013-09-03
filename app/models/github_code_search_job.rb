@@ -9,6 +9,6 @@ class GithubCodeSearchJob < Struct.new(:api_response_record_id)
 
   def failure(job)
     Delayed::Worker.logger.error "job_failed: #{api_response.attributes.to_json}"
-    api_response.failed!
+    api_response.fail!
   end
 end
