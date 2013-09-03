@@ -15,8 +15,8 @@ FindingBits does this by caching a list of the top projects in each language, an
     bundle
     rake db:setup
     
-    # retrieve all the top repos into JSON files
-    GH_CODESEARCH_DATASTORE_PATH=/tmp rake datastore:retrieve_top_repos
+    # retrieve all the top repos into the db
+    rake datastore:retrieve_top_repos
 
-    GH_CODESEARCH_DATASTORE_PATH=/tmp rails server
+    rails server
     

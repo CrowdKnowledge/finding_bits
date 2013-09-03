@@ -16,12 +16,11 @@ describe "github api request" do
   it "searches a list of repositories for a code snippet" do
     search_result = nil
     VCR.use_cassette("github_api/search") do
-      search_result = GithubApi.new.code_search(search_snippet: "popen3", repos: ["rails/rails"])
+      search_result = GithubApi.new.code_search(search_snippet: "gsub", repos: ["rails/rails"], page: 1).results
     end
 
-    expect(search_result).to be_an Array
-    expect(search_result).to be_present
-    expect(search_result)
+    expect(search_result).to be_a Hash
+    expect(search_result["items"].length).to be > 1
   end
 
   describe "paginated response" do

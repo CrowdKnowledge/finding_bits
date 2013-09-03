@@ -1,5 +1,4 @@
 class ApiResponse < ActiveRecord::Base
-  DATASTORE_PATH = ENV["GH_CODESEARCH_DATASTORE_PATH"]
   RESPONSE_AVAILABLE = "available"
   RESPONSE_QUEUED = "queued"
 
@@ -42,7 +41,7 @@ class ApiResponse < ActiveRecord::Base
 
   # List of top repos for the given language
   def repos
-    @repos ||= GithubLanguageDatastore.new(DATASTORE_PATH, language).retrieve_top_repos["results"]["items"]
+    @repos ||= TopRepo.where(language: language).pluck(:full_name)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830055408) do
+ActiveRecord::Schema.define(version: 20130903110157) do
 
   create_table "api_responses", force: true do |t|
     t.string   "language"
@@ -38,5 +38,15 @@ ActiveRecord::Schema.define(version: 20130830055408) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "top_repos", force: true do |t|
+    t.string   "language"
+    t.string   "full_name"
+    t.string   "html_url"
+    t.integer  "forks"
+    t.integer  "watchers"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
