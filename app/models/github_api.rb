@@ -46,6 +46,7 @@ class GithubApi
     self.class.get(CODE_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
   end
 
+  # Wrap the GithubApi results and provide pagination information extracted from the Link headers
   class Response
     attr_reader :results, :next_page_url, :last_page_url
 
@@ -56,10 +57,12 @@ class GithubApi
       @last_page_url = links.find { |link| link.attrs["rel"] == 'last' }.try(:href)
     end
 
+    # Is this the last page of the result?
     def last_page?
       @last_page_url == nil
     end
 
+    # The last page number of the result set
     def last_page_number
       @last_page_number ||= CGI.parse(last_page_url)["page"].first.to_i
     end
