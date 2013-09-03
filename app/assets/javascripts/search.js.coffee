@@ -16,8 +16,8 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
 
   # Make a search request, retry if the result isn't immediately available.
   $scope.make_request = (maximum_retries, current_retries=0) ->
-    $http.get("search.json", {params: $scope.form}).
-      success (data, status, headers, config) ->
+    $http.get("search.json", {params: $scope.form})
+      .success( (data, status, headers, config) ->
         if data["status"] == 'available'
           $scope.search_results = data["result"]["items"]
           $scope.is_searching = false
@@ -29,6 +29,7 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
             $timeout (->
               $scope.make_request maximum_retries, current_retries+1
             ), current_retries*1500
-
+      ).error (data, status, headers, config) ->
+        $scope.search_status = "Could not contact the server"
   init()
 ]
