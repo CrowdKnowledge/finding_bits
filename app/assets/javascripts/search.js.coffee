@@ -19,7 +19,7 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
     $http.get("search.json", {params: $scope.form}).
       success (data, status, headers, config) ->
         if data["status"] == 'available'
-          $scope.search_results = data["result"]
+          $scope.search_results = data["result"]["items"]
           $scope.is_searching = false
         else if data["status"] == 'queued'
           if current_retries+1 == maximum_retries

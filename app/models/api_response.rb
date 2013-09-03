@@ -32,7 +32,7 @@ class ApiResponse < ActiveRecord::Base
     raise "Cannot search on an unqueued request" unless queued?
 
     @search_result = GithubApi.new.code_search(search_snippet: search_snippet, repos: repos)
-    update_attributes(response_json: @search_result.to_json, status: ApiResponse::RESPONSE_AVAILABLE)
+    update_attributes(response_json: @search_result.results.to_json, status: ApiResponse::RESPONSE_AVAILABLE)
   end
 
   # This request has failed permanently. Remove itself so that it will be retried when someone tries again.

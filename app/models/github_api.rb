@@ -43,7 +43,7 @@ class GithubApi
     }
 
     logger.info "#{CODE_URI}, #{query.to_json}"
-    self.class.get(CODE_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
+    GithubApi::Response.new(self.class.get(CODE_URI, {query: query, headers: BETA_HEADER}))
   end
 
   # Wrap the GithubApi results and provide pagination information extracted from the Link headers
