@@ -27,7 +27,7 @@ class ApiResponse < ActiveRecord::Base
     @search_result ||= JSON.parse(response_json)
   end
 
-  # Search and update the results.
+  # Run the search and save the results
   def search!
     raise "Cannot search on an unqueued request" unless queued?
 
@@ -42,7 +42,7 @@ class ApiResponse < ActiveRecord::Base
 
   # List of top repos for the given language
   def repos
-    @repos ||= GithubLanguageDatastore.new(DATASTORE_PATH, language).retrieve_top_repos
+    @repos ||= GithubLanguageDatastore.new(DATASTORE_PATH, language).retrieve_top_repos["results"]["items"]
   end
 
 end

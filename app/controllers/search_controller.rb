@@ -12,7 +12,7 @@ class SearchController < ApplicationController
 
         api_response = ApiResponse.find_by h
 
-        if api_response.nil? # First time this request is received. Queue it up.
+        if api_response.nil? # This is the first time this request is received. Queue it up.
           ApiResponse.queue h
           result = {"status" => ApiResponse::RESPONSE_QUEUED}
 

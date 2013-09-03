@@ -23,7 +23,7 @@ class GithubApi
         per_page: 100,
         page: h[:page]
     }
-    self.class.get(REPOSITORIES_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
+    GithubApi::Response.new(self.class.get(REPOSITORIES_URI, {query: query, headers: BETA_HEADER}))
   end
 
   # Search Github for a code snippet inside the given list of repositories.
@@ -45,4 +45,24 @@ class GithubApi
     logger.info "#{CODE_URI}, #{query.to_json}"
     self.class.get(CODE_URI, {query: query, headers: BETA_HEADER}).parsed_response["items"]
   end
+
+  class Response
+    attr_reader :results, :next_page_url, :last_page_url
+
+    def initialize(httparty_response)
+      @results = httparty_response.parsed_response
+      links = LinkHeader.parse(httparty_response.headers["Link"]).links
+      @next_page_url = links.find { |link| link.attrs["rel"] == 'next' }.try(:href)
+      @last_page_url = links.find { |link| link.attrs["rel"] == 'last' }.try(:href)
+    end
+
+    def last_page?
+      @last_page_url == nil
+    end
+
+    def last_page_number
+      @last_page_number ||= CGI.parse(last_page_url)["page"].first.to_i
+    end
+  end
 end
+
