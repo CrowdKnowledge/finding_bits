@@ -6,7 +6,9 @@ gem 'httparty'
 gem 'delayed_job_active_record'
 
 gem 'daemons'
-gem 'rspec-rails'
+
+# Github paginated search results uses the new Link HTML header for pagination information. This gem parses it.
+gem 'link_header'
 
 gem 'susy'
 gem 'compass', '>= 0.12.2'
@@ -45,4 +47,12 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+
+group :test do
+  gem 'zeus'
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
 end

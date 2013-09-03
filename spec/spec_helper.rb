@@ -6,6 +6,8 @@ require 'rspec/rails'
 # Zeus runs the tests twice with autorun. https://github.com/burke/zeus/issues/180
 # require 'rspec/autorun'
 
+require 'vcr'
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
