@@ -19,8 +19,16 @@
         </div>
       </form>
 
-      <div class="results" ng-show="search_results.length">
-        <div class="result" ng-repeat="result in search_results">
+      <div class="results" ng-show="searchPaginator.currentPageItems.length">
+        <div class="page-navigation">
+          Current: {{searchPaginator.currentPageNumber}}
+          <br/>
+
+          <a href='' ng-click='searchPaginator.previous()'>Previous page {{searchPaginator.prevPageNumber}}</a> |
+          <a href='' ng-click='searchPaginator.next()'>Next page {{searchPaginator.nextPageNumber}}</a> |
+          <a href='' ng-click='searchPaginator.last()'>Last page {{searchPaginator.lastPageNumber}}</a>
+        </div>
+        <div class="result" ng-repeat="result in searchPaginator.currentPageItems">
 
           <div class="repo-link-bar">
             <a class='repo repo-name' href="{{result.repository.html_url}}">{{result.repository.full_name}}</a>

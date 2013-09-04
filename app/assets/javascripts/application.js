@@ -10,12 +10,16 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require underscore
 //= require jquery
 //= require jquery_ujs
 //= require unstable/angular
 //= require unstable/angular-resource
 //= require highlight
+//= require uri
+//= require global_functions
+//= require modules
+//= require paginator
 //= require chosen-jquery
 //= require chosen
-//= require modules
 //= require_tree .

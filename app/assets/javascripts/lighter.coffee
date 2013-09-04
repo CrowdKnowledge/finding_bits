@@ -5,7 +5,11 @@ angular.module('findingBitsApp').directive('syntaxcode', ($timeout) ->
     transclude: false,
     scope: { language: "@", snippet: "="},
     template: "<pre></pre>",
-    link: (scope, $iElement, iAttrs) ->
+    link: (scope, $iElement, iAttrs, ctrl) ->
+      scope.$on('$destroy', ->
+        $iElement.remove()
+      )
+
       $timeout( ->
         $iElement.html(hljs.highlight(scope.language, scope.snippet, true).value)
       , 0)
