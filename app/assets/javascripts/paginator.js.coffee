@@ -1,7 +1,8 @@
+# GithubAPI results Paginator.
+# Wraps the user-supplied `fetchFunction` that makes the actual Github API request.
 angular.module("findingBitsApp", []).factory "Paginator", ->
   (fetchFunction) ->
     paginator =
-      hasNextVar: false
 
       search: ->
         fetchFunction @currentPageNumber, (data, status, headers ) =>
@@ -21,8 +22,9 @@ angular.module("findingBitsApp", []).factory "Paginator", ->
           @search()
 
       last: ->
-        @currentPageNumber = @lastPageNumber
-        @search()
+        if @lastPageNumber?
+          @currentPageNumber = @lastPageNumber
+          @search()
 
       previous: ->
         if @currentPageNumber isnt 1
