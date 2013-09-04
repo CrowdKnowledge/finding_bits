@@ -21,12 +21,17 @@
 
       <div class="results" ng-show="searchPaginator.currentPageItems.length">
         <div class="page-navigation">
-          Current: {{searchPaginator.currentPageNumber}}
+          Current page: {{searchPaginator.currentPageNumber}}
           <br/>
-
-          <a href='' ng-click='searchPaginator.previous()'>Previous page {{searchPaginator.prevPageNumber}}</a> |
-          <a href='' ng-click='searchPaginator.next()'>Next page {{searchPaginator.nextPageNumber}}</a> |
-          <a href='' ng-click='searchPaginator.last()'>Last page {{searchPaginator.lastPageNumber}}</a>
+          <a href='' ng-click='searchPaginator.previous()' ng-show='searchPaginator.prevPageNumber'>
+            Previous page {{searchPaginator.prevPageNumber}}
+          </a> |
+          <a href='' ng-click='searchPaginator.next()' ng-show='searchPaginator.nextPageNumber'>
+            Next page {{searchPaginator.nextPageNumber}}
+          </a> |
+          <a href='' ng-click='searchPaginator.last()' ng-show='searchPaginator.lastPageNumber'>
+            Last page {{searchPaginator.lastPageNumber}}
+          </a>
         </div>
         <div class="result" ng-repeat="result in searchPaginator.currentPageItems">
 
