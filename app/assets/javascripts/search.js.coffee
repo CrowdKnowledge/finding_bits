@@ -13,9 +13,13 @@ angular.module('findingBitsApp').controller 'SearchController', ['$log', '$scope
 
     $scope.languagesList = [ 'ruby', 'python']
 
+  repos = ->
+    repo_languages
+    $scope.language
+
   # generates the Github API search URL for the selected language and code snippet.
   codeSearchUrl = ->
-    q = "#{$scope.form.search_snippet} in:file @rails/rails"
+    q = "#{$scope.form.search_snippet} in:file #{repos}"
     serializedQueryString = jQuery.param {q: q, page: $scope.searchPaginator.currentPageNumber}
     "https://api.github.com/search/code?" + serializedQueryString
 

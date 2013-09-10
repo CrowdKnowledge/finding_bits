@@ -1,6 +1,7 @@
 FindingBits::Application.routes.draw do
   root "search#index"
   get '/search' => "search#index"
+  get '/home' => "search#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

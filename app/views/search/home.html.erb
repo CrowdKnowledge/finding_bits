@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FindingBits</title>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//use.typekit.net/xgt4lgm.js"></script>
+  <script type="text/javascript">try {
+    Typekit.load();
+  } catch (e) {
+  }</script>
+</head>
+
+<style type="text/css">
+  body {
+    margin: 0 auto;
+    width: 662px;
+  }
+
+  .section {
+    margin-bottom: 64px;
+  }
+
+  .section-heading {
+    font-family: "Georgia, Times, 'Times New Roman', serif";
+    font-variant: small-caps;
+    font-size: 21px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: lowercase;
+    font-weight: 300;
+  }
+
+  .section-content {
+    text-rendering: optimizelegibility;
+    font-size: 21px;
+    font-family: "Georgia, Times, 'Times New Roman', serif";
+    line-height: 32px;
+  }
+
+  .client-logo {
+  }
+
+  .case-study-description {
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  a {
+    color: black;
+    text-transform: lowercase;
+    font-variant: small-caps;
+  }
+
+  .logo-image {
+    float: left;
+    width: 220px;
+  }
+
+  .description {
+    float: right;
+    width: 400px;
+  }
+
+  .logo-section {
+    text-align: center;
+  }
+
+</style>
+
+<body>
+
+<div class="logo-section section">
+  <%= image_tag "nilenso_logo.png", :class => 'nilenso-logo' %>
+</div>
+
+<div class="about section">
+  <h2 class="section-heading">About</h2>
+
+  <p class="section-content">Nilenso is an employee-owned software
+    cooperative. We ship beautiful, fully-tested applications for you
+    everyday
+  </p>
+</div>
+
+<div class="startups section">
+  <h2 class="section-heading">We work with startups</h2>
+
+  <p class="section-content">
+    Building a great tech team takes time. But you need to release your
+    product right now to start gathering feedback and run experiments.
+    Hire us to build your product on a strong foundation, ready to be
+    transitioned off as your team grows.
+  </p>
+
+  <div class="case-study">
+    <div class="logo-image">
+      <%= image_tag "grasshopper_logo.png", :class => 'client-logo' %>
+    </div>
+
+    <div class="description">
+      <p class="case-study-description section-content">
+        <strong>Grasshopper</strong> is a virtual telephony system serving
+        massive number of calls everyday. They hired us to build the
+        version
+        2 of their large scale call routing system. We set up a truly
+        distributed process and development practices,
+        and started shipping from day one.
+        <a href="grasshopper">more</a>
+      </p>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="case-study">
+    <div class="logo-image">
+      <%= image_tag "weddingtonway_logo.png", :class => 'client-logo' %>
+    </div>
+
+    <div class="description">
+      <p class='case-study-description section-content'>
+        <strong>Weddingtonway</strong> hired us to add
+        more features to
+        their flagship accounting software. We worked through the entire
+        stack - from the backend modules, customer engagement and front-end
+        to deliver valuable features. <a href="grasshopper">more</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <!--<p class='client-logos'>-->
+  <!--<%= image_tag "flipkart_logo.png" %>-->
+  <!--<%= image_tag "ashoka_logo.png" %>-->
+  <!--<%= image_tag "indinero_logo.png" %>-->
+  <!--<%= image_tag "just_books_logo.png" %>-->
+  <!--</p>-->
+
+  <p class="more section-content">
+    Check out our <a href="portfolio">portfolio</a> to see a list of the
+    clients we have worked with.
+  </p>
+</div>
+<!--<div class="process section">-->
+<!--<h2 class="section-heading">We ship everyday</h2>-->
+
+<!--<p class='section-content'>-->
+<!--We follow Extreme Programming (XP) practices to ship reliable-->
+<!--software fast.-->
+<!--We work in pairs, test drives code and follow weekly iterations.-->
+<!--<br/>-->
+<!--See how our agile process can help you build a great business.-->
+<!--<a href="process">Learn more about our process.</a>-->
+<!--</p>-->
+<!--</div>-->
+
+<div class="people section">
+  <h2 class="section-heading">We are great people to work with</h2>
+
+  <p class="section-content">
+    We are expert developers with extensive experience in Ruby, Rails,
+    frontend development and Android development. We have built and
+    launched products, regularly speak at industry conferences, sings
+    carnatic music and climbs mountains.
+  </p>
+
+  <!--<p class="more">-->
+  <!--<%= image_tag "http://nilenso.com/people/akshay-200.png" %>-->
+  <!--<%= image_tag "http://nilenso.com/people/aninda-200.png" %>-->
+  <!--<%= image_tag "http://nilenso.com/people/asif-200.png" %>-->
+  <!--<%= image_tag "http://nilenso.com/people/jithu-200.png" %>-->
+  <!--<%= image_tag "http://nilenso.com/people/neha-200.png" %>-->
+  <!--<%= image_tag "http://nilenso.com/people/nivedita-200.png" %>-->
+  <!--</p>-->
+</div>
+
+</body>
+</html>

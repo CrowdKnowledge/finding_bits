@@ -1,7 +1,6 @@
 namespace :datastore do
   desc "Retrieve all top repos for Ruby, Python, PHP"
   task :retrieve_top_repos => :environment do
-    languages = ["ruby", "python", "php"]
 
     languages.each { |language|
       puts "Retrieving top #{language} repos.."
